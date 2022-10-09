@@ -10,7 +10,10 @@ gem 'active_model_serializers'
 
 
 # Use sqlite3 as the database for Active Record
+
+group :production do
 gem 'pg'
+end
 
 
 
