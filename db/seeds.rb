@@ -5,16 +5,26 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-puts "Start seeding"
+puts 'seed'
+10.times do
+    Power.create(
+       name: Faker::Superhero.power,
+       description: Faker::TvShows::BigBangTheory.quote
+    )
+end
 
-Hero.create(name: "Kamala Khan", super_name:"Ms. Marvel")
-Hero.create(name: "Doreen Green", super_name:"Squirrel Girl")
-Hero.create(name: "Gwen Stacy", super_name:"Spider-Gwen")
+10.times do
+    HeroPower.create(
+       strength: ['Weak', 'Average','Strong'].sample,
+       hero_id: rand(1..5),
+       power_id: rand(1..10)
+    )
+end
 
-Power.create(name: "super strength", description: "gives the wielder super-human strengths")
-Power.create(name: "flight", description: "gives the wielder the ability to fly through the skies at supersonic speed")
-
-HeroPower.create(strength: "Average", power_id:"1", hero_id:"3")
-HeroPower.create(strength: "Subpar", power_id:"2", hero_id:"2")
-
-puts "End seeding"
+5.times do
+    Hero.create(
+       name: Faker::Superhero.name,
+        super_name: Faker::Superhero.descriptor
+    )
+end
+puts 'end'
