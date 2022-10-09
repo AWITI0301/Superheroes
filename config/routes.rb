@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  resources :heros
-  resources :hero_powers
-  resources :powers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :heroes ,only:[:index,:show,]
+  resources :powers ,only:[:index,:show,:update,:create]
+  get '/hero_powers', to: 'hero_powers#index'
+  post '/hero_powers', to: 'hero_powers#create'
 end
